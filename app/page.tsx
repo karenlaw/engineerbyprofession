@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import calculatorImage from '../public/Old fashioned calculator.jpg';
 import KarenImage from '../public/KarenWithCat.jpeg';
 
@@ -27,7 +28,7 @@ export default function Home() {
         that improve performance, streamline workflows, and enhance developer productivity.
       </p>
       <p>
-        Here is my <a href="/resume">resume</a> for your consideration.
+        Here is my <Link href="/resume">resume</Link> for your consideration.
       </p>
 
       <div className="image-container">
