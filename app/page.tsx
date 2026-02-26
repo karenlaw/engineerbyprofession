@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import calculatorImage from '../public/Old fashioned calculator.jpg';
-import KarenImage from '../public/KarenWithCat.jpeg';
+import KarenImage from '../public/KarenWithCat_closeup.jpg';
 
 export default function Home() {
   return (
@@ -11,7 +11,7 @@ export default function Home() {
           <Image
             src={KarenImage}
             alt="Karen with cat photo"
-            style={{ height: '20%', width: 'auto' }}
+            style={{ height: '200px', width: 'auto' }}
           />
         </div>
       </div>

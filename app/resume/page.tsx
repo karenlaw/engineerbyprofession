@@ -1,28 +1,27 @@
 import Image from "next/image";
-import bannerImage from '../../public/cellarius-seasons-banner.png';
-
+//import bannerImage from '../../public/cellarius-seasons-banner.png';
+import bannerImage from '../../public/Pādishāhnāmah.png'
 export default function Resume() {
   return (
     <>
       <h2>Resume</h2>
 
-      <div className="image-container">
+      <div className="container">
         <Image
           src={bannerImage}
-          alt="cellarius seasons banner"
+          alt="Pādishāhnāmah page border"
           width={300}
         />
-      </div>
-      <p />
 
       <iframe
-        src="/Karen Law Resume Feb 26.pdf"
-        width="100%"
-        height="640px"
+        src="/Karen Law Resume Feb 26.pdf#zoom=100"
+        width="FitW"
+        height="auto"
         style={{ border: "2px solid black" }}
         className="pdf-container"
       />
-
+	  </div>
+	  <p/>
       <div className="button-container">
         <a
           href="/Karen Law Resume Feb 26.pdf"
