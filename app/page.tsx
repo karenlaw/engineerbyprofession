@@ -19,7 +19,7 @@ export default function Home() {
       <p>Hello, welcome to my site; my name is Karen Law.</p>
       <p>
         I am a senior Python developer with extensive experience designing and building scalable
-        full-stack solutions, internal platforms, and automation tools. I have delivered
+        full-stack applications, internal platforms, and automation tools. I have delivered
         enterprise-grade solutions at Apple, Airbus, and Western Digital, with deep expertise
         in Python, APIs, data processing, and CI/CD.
       </p>
