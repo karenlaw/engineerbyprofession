@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import calculatorImage from '../public/Old fashioned calculator.jpg';
-import KarenImage from '../public/colorifyai-water_color.jpeg';
+import KarenImage from '../public/colorifyai-color_pencil.jpeg';
 
 export default function Home() {
   return (
