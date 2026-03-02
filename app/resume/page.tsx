@@ -1,6 +1,6 @@
 import Image from "next/image";
 //import bannerImage from '../../public/cellarius-seasons-banner.png';
-import bannerImage from '../../public/Pādishāhnāmah.png'
+import bannerImage from '../../public/Astronomicum Caesasreum.png'
 export default function Resume() {
   return (
     <>
