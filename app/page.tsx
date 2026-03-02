@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import calculatorImage from '../public/Old fashioned calculator.jpg';
-import KarenImage from '../public/KarenWithCat_closeup.jpg';
+import KarenImage from '../public/colorifyai-water_color.jpeg';
 
 export default function Home() {
   return (
@@ -10,7 +10,7 @@ export default function Home() {
         <div className="image-left">
           <Image
             src={KarenImage}
-            alt="Karen with cat photo"
+            alt="Karen with cat image"
             style={{ height: '200px', width: 'auto' }}
           />
         </div>
