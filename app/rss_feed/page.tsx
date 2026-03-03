@@ -10,7 +10,6 @@ interface Article {
   link: string;
   pubDate: string;
   description: string;
-  thumbnail: string | null;
 }
 
 function parseRSSFromXML(xmlContent: string, maxArticles: number): Article[] {
@@ -34,23 +33,13 @@ function parseRSSFromXML(xmlContent: string, maxArticles: number): Article[] {
       if (field && field.length > content.length) content = field;
     });
 
-    const mediaThumbnail =
-      item.querySelector("media\\:thumbnail") || item.querySelector("media:thumbnail");
-    const mediaContent =
-      item.querySelector("media\\:content") || item.querySelector("media:content");
-    let thumbnail: string | null = mediaThumbnail?.getAttribute("url") || null;
-    if (!thumbnail) thumbnail = mediaContent?.getAttribute("url") || null;
 
-    articles.push({ title, link, pubDate, description: content, thumbnail });
+    articles.push({ title, link, pubDate, description: content });
   }
 
   return articles;
 }
 
-function extractThumbnail(description: string): string | null {
-  const match = description.match(/<img[^>]+src="([^">]+)"/);
-  return match?.[1] || null;
-}
 
 function stripHtml(html: string): string {
   const tmp = document.createElement("div");
@@ -148,17 +137,9 @@ export default function Blog() {
         {!loading && !error && articles.map((article, index) => {
           const cleanDescription = stripHtml(article.description || "");
           const truncated = truncateText(cleanDescription);
-          const thumbnail = extractThumbnail(article.description) || article.thumbnail;
 
           return (
             <article className="article" key={index}>
-              {thumbnail && (
-                <div className="article-image">
-                  <img src={thumbnail} alt={article.title} loading="lazy"
-                    onError={(e) => { (e.target as HTMLImageElement).parentElement!.style.display = "none"; }}
-                  />
-                </div>
-              )}
               <div className="article-content">
                 <h3 className="article-title">
                   <a href={article.link} target="_blank" rel="noopener noreferrer">
