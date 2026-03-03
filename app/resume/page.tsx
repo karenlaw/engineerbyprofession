@@ -1,6 +1,6 @@
 import Image from "next/image";
-//import bannerImage from '../../public/cellarius-seasons-banner.png';
-import bannerImage from '../../public/Pādishāhnāmah.png'
+import bannerImage from '../../public/Astronomicum Caesasreum.png';
+
 export default function Resume() {
   return (
     <>
@@ -14,7 +14,7 @@ export default function Resume() {
         />
 
       <iframe
-        src="/Karen Law Resume Feb 26.pdf#zoom=100"
+        src="/Karen_Law_Resume_Mar26.pdf#zoom=100"
         width="FitW"
         height="auto"
         style={{ border: "2px solid black" }}
@@ -24,8 +24,8 @@ export default function Resume() {
 	  <p/>
       <div className="button-container">
         <a
-          href="/Karen Law Resume Feb 26.pdf"
-          download="Karen Law Resume Feb 26.pdf"
+          href="/Karen_Law_Resume_Mar26.pdf"
+          download="Karen_Law_Resume_Mar26.pdf"
           target="_blank"
           rel="noopener noreferrer"
         >
