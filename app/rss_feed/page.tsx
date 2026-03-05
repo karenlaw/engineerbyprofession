@@ -20,26 +20,35 @@ function parseRSSFromXML(xmlContent: string, maxArticles: number): Article[] {
 
   for (let i = 0; i < Math.min(items.length, maxArticles); i++) {
     const item = items[i];
-    const title = item.querySelector("title")?.textContent || "No title";
-    const link = item.querySelector("link")?.textContent || "#";
-    const pubDate = item.querySelector("pubDate")?.textContent || "";
+    const title = item.querySelector("title")?.textContent?.trim() || "No title";
+
+    let link = "#";
+    const linkEl = item.querySelector("link");
+    if (linkEl) {
+      link = linkEl.textContent?.trim() ||
+        linkEl.nextSibling?.textContent?.trim() || "#";
+    }
+
+    const pubDate = item.querySelector("pubDate")?.textContent?.trim() || "";
     const description = item.querySelector("description")?.textContent || "";
-    const contentEncoded = item.querySelector("content\\:encoded")?.textContent || "";
-    const contentEncodedAlt = item.querySelector("content:encoded")?.textContent || "";
+
+    // Use getElementsByTagNameNS to avoid the invalid "content:encoded" selector
+    const contentEncoded = item.getElementsByTagNameNS(
+      "http://purl.org/rss/1.0/modules/content/", "encoded"
+    )[0]?.textContent || "";
+
     const summary = item.querySelector("summary")?.textContent || "";
 
     let content = "";
-    [description, contentEncoded, contentEncodedAlt, summary].forEach((field) => {
+    [description, contentEncoded, summary].forEach((field) => {
       if (field && field.length > content.length) content = field;
     });
-
 
     articles.push({ title, link, pubDate, description: content });
   }
 
   return articles;
 }
-
 
 function stripHtml(html: string): string {
   const tmp = document.createElement("div");
@@ -61,43 +70,18 @@ function formatDate(dateString: string): string {
 }
 
 async function fetchMediumArticles(maxArticles = 5): Promise<Article[]> {
-  const rssUrl = "https://medium.com/feed/@engineerbyprofession"; // 👈 CHANGE THIS to your Medium username
+  const res = await fetch("/api/articles");
+  if (!res.ok) throw new Error("Failed to fetch articles");
 
-  const methods = [
-    async () => {
-      const res = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(rssUrl)}`);
-      if (!res.ok) throw new Error("AllOrigins failed");
-      const data = await res.json();
-      if (!data.contents) throw new Error("No content");
-      return parseRSSFromXML(data.contents, maxArticles);
-    },
-    async () => {
-      const res = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`);
-      if (!res.ok) throw new Error("RSS2JSON failed");
-      const data = await res.json();
-      if (data.status !== "ok") throw new Error("RSS2JSON error");
-      return data.items.slice(0, maxArticles) as Article[];
-    },
-    async () => {
-      const res = await fetch(`https://corsproxy.org/?${encodeURIComponent(rssUrl)}`);
-      if (!res.ok) throw new Error("corsproxy failed");
-      return parseRSSFromXML(await res.text(), maxArticles);
-    },
-    async () => {
-      const res = await fetch(`https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(rssUrl)}`);
-      if (!res.ok) throw new Error("codetabs failed");
-      return parseRSSFromXML(await res.text(), maxArticles);
-    },
-  ];
+  const contentType = res.headers.get("Content-Type") || "";
 
-  for (let i = 0; i < methods.length; i++) {
-    try {
-      return await methods[i]();
-    } catch (e) {
-      if (i === methods.length - 1) throw e;
-    }
+  if (contentType.includes("application/json")) {
+    const data = await res.json();
+    return data.items.slice(0, maxArticles) as Article[];
   }
-  throw new Error("All methods failed");
+
+  const xml = await res.text();
+  return parseRSSFromXML(xml, maxArticles);
 }
 
 export default function Blog() {
@@ -117,13 +101,13 @@ export default function Blog() {
         <div className="articles-header">
           <h2>Medium Publication Articles</h2>
         </div>
-		<div className="container">
-			<Image
-		  		src={bannerImage}
-		  		alt="printing book in quarto format layout illustration"
-		/>
-		</div>
-		<p>Some posts from my Medium publication collection</p>
+        <div className="container">
+          <Image
+            src={bannerImage}
+            alt="printing book in quarto format layout illustration"
+          />
+        </div>
+        <p>Some posts from my Medium publication collection</p>
 
         {loading && (
           <div className="loading">
@@ -160,6 +144,5 @@ export default function Blog() {
           );
         })}
       </div>
-   /* </div> */
   );
 }
