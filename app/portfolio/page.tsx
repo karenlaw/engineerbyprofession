@@ -55,7 +55,7 @@ export default function Portfolio() {
   useEffect(() => {
 	fetchRepos()
 	  .then(setArticles)
-	  // .catch(() => setError("Unable to load articles. Please check your Medium username."))
+	  .catch(() => setError("Unable to load GitHub projects."))
 	  .finally(() => setLoading(false));
   }, []);
 
