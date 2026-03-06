@@ -7,7 +7,7 @@ import cardImage from '../../public/old_catalog_card.png';
 import { Octokit } from "octokit";
 
 const octokit = new Octokit({
-  auth: process.env.NEXT_PUBLIC_GITHUB_TOKEN,
+  auth: process.env.NEXT_PUBLIC_GIT_TOKEN,
 });
 
 interface Repo {
