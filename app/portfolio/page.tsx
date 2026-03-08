@@ -3,12 +3,12 @@
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import cardImage from '../../public/old_catalog_card.png';
-import { Octokit } from "octokit";
+// import { Octokit } from "octokit";
 import { formatDate } from "../components/lib";
 
-const octokit = new Octokit({
-  auth: process.env.GIT_TOKEN,
-});
+// const octokit = new Octokit({
+//   auth: process.env.GIT_TOKEN,
+// });
 
 interface Repo {
   name: string;
@@ -18,13 +18,18 @@ interface Repo {
 }
 
 async function fetchRepos(maxRepos = 5): Promise<Repo[]> {
-  const res = await octokit.paginate("GET /user/repos", { type: "public" });
-  return res.slice(0, maxRepos).map((item: any) => ({
-    name: item.name || "No title",
-    url: item.url || "#",
-    pushed_at: item.pushed_at || "",
-    description: item.description || "",
-  }));
+  const res = await fetch("/api/projects?maxRepos=" + maxRepos);
+  console.log(res);
+
+  if (!res.ok) throw new Error("Failed to fetch articles");
+
+  const contentType = res.headers.get("Content-Type") || "";
+
+  if (contentType.includes("application/json")) {
+    const data = await res.json() || "";
+
+    return data.items as Repo[];
+  }
 }
 
 export default function Portfolio() {
