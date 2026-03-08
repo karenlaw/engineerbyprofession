@@ -7,7 +7,7 @@ import { Octokit } from "octokit";
 import { formatDate } from "../components/lib";
 
 const octokit = new Octokit({
-  auth: process.env.NEXT_PUBLIC_GIT_TOKEN,
+  auth: process.env.GIT_TOKEN,
 });
 
 interface Repo {
