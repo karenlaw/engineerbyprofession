@@ -22,14 +22,9 @@ async function fetchRepos(maxRepos = 5): Promise<Repo[]> {
   console.log(res);
 
   if (!res.ok) throw new Error("Failed to fetch articles");
+  const data = await res.json() || "";
 
-  const contentType = res.headers.get("Content-Type") || "";
-
-  if (contentType.includes("application/json")) {
-    const data = await res.json() || "";
-
-    return data.items as Repo[];
-  }
+  return data.items as Repo[];
 }
 
 export default function Portfolio() {
