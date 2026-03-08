@@ -133,7 +133,10 @@ a:hover {
 }
 
 /* ── Blog page ── */
-.blog-container { max-width: 100%; }
+.blog-container { 
+  max-width: 100%; 
+	text-align: center;	
+}
 
 .blog-container .articles-header { text-align: center; margin-bottom: 30px; }
 /*.blog-container .articles-header h2 { color: #1a1a1a; font-size: 28px; font-weight: 700; margin: 0 0 10px 0; } */
@@ -151,7 +154,8 @@ a:hover {
 .blog-container .article:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(0,0,0,0.12);
-  border-color: #00ab6c;
+  /* border-color: #00ab6c; */
+  border-color: blue;
 }
 
 .blog-container p {
@@ -164,9 +168,17 @@ a:hover {
 
 .blog-container .article-content { padding: 24px; }
 .blog-container .article-title { font-size: 20px; font-weight: 600; margin-bottom: 12px; line-height: 1.4; }
-.blog-container .article-title a { color: #1a1a1a; text-decoration: none; transition: color 0.2s ease; }
-.blog-container .article-title a:hover { color: #00ab6c; }
-.blog-container .article-description { color: #6b6b6b; font-size: 15px; line-height: 1.6; margin-bottom: 16px; }
+/* .blog-container .article-title a { color: #1a1a1a; text-decoration: none; transition: color 0.2s ease; } */
+.blog-container .article-title a { color: blue; transition: color 0.2s ease; }
+/* .blog-container .article-title a:hover { color: #00ab6c; } */
+blog-container .article-title a:hover { color: blue; text-decoration: underline;}
+.blog-container .article-description { 
+  color: #6b6b6b; 
+  font-size: 15px; 
+  line-height: 1.6; 
+  margin-bottom: 16px; 
+  text-align: left;
+}
 
 .blog-container .article-meta {
   display: flex;
@@ -180,15 +192,18 @@ a:hover {
 .blog-container .article-date { font-weight: 500; }
 
 .blog-container .read-more {
-  color: #00ab6c;
+  /* color: #00ab6c; */
+  color: blue;
   font-weight: 600;
   text-decoration: none;
   padding: 8px 16px;
   border-radius: 20px;
-  border: 1px solid #00ab6c;
+  /* border: 1px solid #00ab6c; */
+  border: 1px solid blue;
   transition: all 0.2s ease;
 }
-.blog-container .read-more:hover { background: #00ab6c; color: white; }
+/* .blog-container .read-more:hover { background: #00ab6c; color: white; } */
+.blog-container .read-more:hover { background: blue; color: white; }
 
 .blog-container .loading { text-align: center; padding: 40px; color: #999; font-size: 16px; }
 .blog-container .error {
@@ -210,6 +225,64 @@ a:hover {
 	display: block;
 	text-align: center;	
 }
+.repo-container .repo-header { text-align: center; margin-bottom: 30px; }
+/* .repo-container .repo-header p { color: #757575; font-size: 16px; margin: 0; } */
+.repo-container p { text-align: center }
+
+.repo-container .repo {
+  border: 1px solid #e6e6e6;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  background: #ffffff;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  overflow: hidden;
+}
+.repo-container .repo:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+  /* border-color: #00ab6c; */
+  border-color: blue;
+}
+
+.repo-container .repo-content { padding: 24px; }
+.repo-container .repo-title { font-size: 20px; font-weight: 600; margin-bottom: 12px; line-height: 1.4; }
+/* .repo-container .repo-title a { color: #1a1a1a; text-decoration: none; transition: color 0.2s ease; } */
+.repo-container .repo-title a { color: blue; text-decoration: none; transition: color 0.2s ease; }
+/* .repo-container .repo-title a:hover { color: #00ab6c; } */
+.repo-container .repo-title a:hover { color: blue; text-decoration: underline;}
+.repo-container .repo-description { 
+  color: #6b6b6b; 
+  font-size: 15px; 
+  line-height: 1.6; 
+  margin-bottom: 16px; 
+  text-align: left;
+}
+
+.repo-container .repo-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: #8a8a8a;
+  border-top: 1px solid #f0f0f0;
+  padding-top: 16px;
+}
+.repo-container .repo-date { font-weight: 500; }
+
+.repo-container .read-more {
+  /* color: #00ab6c; */
+  color: blue;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  /* border: 1px solid #00ab6c; */
+  border: 1px solid blue;
+  transition: all 0.2s ease;
+}
+/* .repo-container .read-more:hover { background: #00ab6c; color: white; } */
+.repo-container .read-more:hover { background: blue; color: white; }
 
 @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 

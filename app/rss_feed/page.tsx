@@ -56,7 +56,7 @@ function stripHtml(html: string): string {
   return tmp.textContent || tmp.innerText || "";
 }
 
-function truncateText(text: string, maxLength = 200): string {
+function truncateText(text: string, maxLength = 240): string {
   if (text.length <= maxLength) return text;
   return text.substr(0, maxLength).substr(0, text.lastIndexOf(" ")) + "...";
 }
