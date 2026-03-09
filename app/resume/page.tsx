@@ -14,7 +14,7 @@ export default function Resume() {
         />
 
       <iframe
-        src="/Karen_Law_Resume_Mar26.pdf#zoom=100"
+        src="/Karen_Law_Resume_Mar26.pdf#view=FitH"
         width="FitW"
         height="auto"
         style={{ border: "2px solid black" }}
