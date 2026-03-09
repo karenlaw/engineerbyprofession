@@ -22,14 +22,16 @@ export default function Resume() {
       />
 	  </div>
 	  <p/>
+      
       <div className="button-container">
         <a
           href="/Karen_Law_Resume_Mar26.pdf"
           download="Karen_Law_Resume_Mar26.pdf"
           target="_blank"
           rel="noopener noreferrer"
+          className="read-more"
         >
-          <button>Download</button>
+          Download
         </a>
       </div>
     </>

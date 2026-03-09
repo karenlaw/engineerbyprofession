@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import calculatorImage from '../public/Old fashioned calculator.jpg';
 import KarenImage from '../public/colorifyai-color_pencil.jpeg';
+import Header from "./header";
 
 export default function Home() {
   return (

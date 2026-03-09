@@ -1,5 +1,5 @@
 import Image from "next/image";
-import bannerImage from '../../public/abacus_small.png';
+import bannerImage from '../../public/oldtelephone.png';
 
 export default function Contact() {
   return (
