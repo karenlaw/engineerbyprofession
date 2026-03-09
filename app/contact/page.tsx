@@ -9,7 +9,7 @@ export default function Contact() {
       <div className="image-container">
         <Image
           src={bannerImage}
-          alt="abacus image"
+          alt="old telephone image"
           width={300}
         />
       </div>
